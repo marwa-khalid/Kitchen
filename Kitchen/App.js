@@ -10,6 +10,7 @@ import HomeScreen from './src/screens/HomeScreen';
 import SignupScreen from './src/screens/SignupScreen';
 import SigninScreen from './src/screens/SigninScreen';
 import ChefRegisterForm from './src/screens/Chef/ChefRegisterForm';
+import ChefProfileScreen from './src/screens/Chef/ChefProfileScreen';
 import ChefLoginForm from './src/screens/Chef/ChefLoginForm';
 import KitchenLoginForm from './src/screens/Kitchen/KitchenLoginForm';
 import KitchenRegisterForm from './src/screens/Kitchen/KitchenRegisterForm';
@@ -30,6 +31,7 @@ function App() {
         <Stack.Screen name="KitchenRegister" component={KitchenRegisterForm}/>
         <Stack.Screen name="KitchenLogin" component={KitchenLoginForm}/>
         <Stack.Screen name="ChefRegister" component={ChefRegisterForm}/>
+        <Stack.Screen name="ChefProfile" component={ChefProfileScreen}/>
         <Stack.Screen name="ChefLogin" component={ChefLoginForm}/>
         <Stack.Screen name="CustomerRegister" component={CustomerRegisterForm}/>
         <Stack.Screen name="CustomerLogin" component={CustomerLoginForm}/>

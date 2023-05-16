@@ -1,10 +1,12 @@
 import axios from 'axios';
 import React, { useState } from 'react';
 import { View, Text, TextInput, StyleSheet, Button, TouchableOpacity} from 'react-native';
+
 const registerChef = async (chefData) => {
   try {
     const response = await axios.post('http://localhost:3500/food/register', chefData);
     console.log(response.data); 
+      navigation.navigate('ChefProfile');
 
   } catch (error) {
     console.log('Error registering chef:', error);
