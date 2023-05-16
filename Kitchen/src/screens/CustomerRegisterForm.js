@@ -1,16 +1,17 @@
 import axios from 'axios';
 import React, { useState } from 'react';
-import { View, Text, TextInput, StyleSheet, Button, TouchableOpacity} from 'react-native';
-const registerChef = async (chefData) => {
+import { View, Text, TextInput, StyleSheet, Button, Alert, TouchableOpacity} from 'react-native';
+
+const registerCustomer = async (customerData) => {
   try {
-    const response = await axios.post('http://localhost:3500/food/register', chefData);
+    const response = await axios.post('http://localhost:3500/food/register', customerData);
     console.log(response.data); 
 
   } catch (error) {
-    console.log('Error registering chef:', error);
+    console.log('Error registering customer:', error);
   }
 };
-const ChefRegisterForm = ({ navigation }) => {
+const CustomerRegisterForm = ({ navigation }) => {
     const [fullName, setFullName] = useState('');
     const [email, setEmail] = useState('');
     const [address, setAddress] = useState('');
@@ -18,16 +19,16 @@ const ChefRegisterForm = ({ navigation }) => {
     const [password, setPassword] = useState('');
   
     const handleRegistration = () => {
-      const chefData = {
+      const customerData = {
         fullName,
         email,
         address,
         phoneNumber,
         password,
-        userType: 'chef',
+        userType: 'customer',
       };
   
-      registerChef(chefData);
+      registerCustomer(customerData);
     };
   
     return (
@@ -69,7 +70,7 @@ const ChefRegisterForm = ({ navigation }) => {
             style={styles.input}
           />
           <Button title="Register" onPress={handleRegistration} />
-          <TouchableOpacity onPress={()=>{{navigation.navigate("ChefLogin")}}}>
+          <TouchableOpacity onPress={()=>{{navigation.navigate("CustomerLogin")}}}>
             <Text> Already have an account? Login!</Text>
           </TouchableOpacity>
         </View>
@@ -94,5 +95,5 @@ const ChefRegisterForm = ({ navigation }) => {
       marginBottom: 10,
     },
   });
-  export default ChefRegisterForm;
+  export default CustomerRegisterForm;
   

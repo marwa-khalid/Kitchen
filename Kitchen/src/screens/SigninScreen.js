@@ -6,13 +6,13 @@ const SigninScreen = ({navigation}) => {
     <View style={styles.container}>
       <Text style={styles.title}>Sign in as</Text>
       <View style={styles.buttonContainer}>
-        <TouchableOpacity style={styles.button}>
+        <TouchableOpacity style={styles.button} onPress = {()=> {(navigation.navigate('CustomerLogin'))}}>
           <Text style={styles.buttonText}>Customer</Text>
         </TouchableOpacity>
         <TouchableOpacity style={styles.button} onPress = {()=> {(navigation.navigate('KitchenLogin'))}} >
           <Text style={styles.buttonText}>Kitchen</Text>
         </TouchableOpacity>
-        <TouchableOpacity style={styles.button}>
+        <TouchableOpacity style={styles.button} onPress = {()=> {(navigation.navigate('ChefLogin'))}}>
           <Text style={styles.buttonText}>Chef</Text>
         </TouchableOpacity>
         <TouchableOpacity style={styles.button}>

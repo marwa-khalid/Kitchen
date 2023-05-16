@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
-import { View, Text, TextInput, Button, StyleSheet, TouchableOpacity} from 'react-native';
+import { View, Text, TextInput, Button, StyleSheet, TouchableOpacity } from 'react-native';
 
-const KitchenLoginForm = ({navigation}) => {
+const CustomerLoginForm = ({navigation}) => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
 
@@ -46,7 +46,7 @@ const KitchenLoginForm = ({navigation}) => {
       />
 
       <Button title="Login" onPress={handleLogin} />
-      <TouchableOpacity onPress={()=>{{navigation.navigate("KitchenRegister")}}}>
+      <TouchableOpacity onPress={()=>{{navigation.navigate("CustomerRegister")}}}>
             <Text> New to Bawarchi? Register!</Text>
         </TouchableOpacity>
     </View>
@@ -71,4 +71,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default KitchenLoginForm;
+export default CustomerLoginForm;

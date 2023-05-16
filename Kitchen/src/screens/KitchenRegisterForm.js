@@ -3,14 +3,13 @@ import React, { useState } from 'react';
 import { View, Text, TextInput, StyleSheet, Button, Alert, TouchableOpacity} from 'react-native';
 import Icon from 'react-native-vector-icons/Ionicons';
 
-const registerKitchen= async (chefData) => {
+const registerKitchen= async (kitchenData) => {
   try {
-    const response = await axios.post('http://localhost:3500/food/register', chefData);
+    const response = await axios.post('http://localhost:3500/food/register', kitchenData);
     console.log(response.data); 
 
   } catch (error) {
     console.log('Error registering kitchen:', error);
-    // Handle the error appropriately
   }
 };
 const KitchenRegisterForm = ({ navigation }) => {
@@ -72,6 +71,9 @@ const KitchenRegisterForm = ({ navigation }) => {
           style={styles.input}
         />
         <Button title="Register" onPress={handleRegistration} />
+        <TouchableOpacity onPress={()=>{{navigation.navigate("KitchenLogin")}}}>
+            <Text> Already have an account? Login!</Text>
+          </TouchableOpacity>
       </View>
     );
   };

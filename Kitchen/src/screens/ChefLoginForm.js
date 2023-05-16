@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { View, Text, TextInput, Button, StyleSheet } from 'react-native';
+import { View, Text, TextInput, Button, StyleSheet, TouchableOpacity} from 'react-native';
 
 const ChefLoginForm = ({navigation}) => {
   const [email, setEmail] = useState('');
@@ -46,6 +46,9 @@ const ChefLoginForm = ({navigation}) => {
       />
 
       <Button title="Login" onPress={handleLogin} />
+      <TouchableOpacity onPress={()=>{{navigation.navigate("ChefRegister")}}}>
+            <Text> New to Bawarchi? Register!</Text>
+        </TouchableOpacity>
     </View>
   );
 };

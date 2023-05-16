@@ -6,7 +6,7 @@ const SignupScreen = ({navigation}) => {
     <View style={styles.container}>
       <Text style={styles.title}>Sign up as</Text>
       <View style={styles.buttonContainer}>
-        <TouchableOpacity style={styles.button}>
+        <TouchableOpacity style={styles.button} onPress = {()=> {(navigation.navigate('CustomerRegister'))}}>
           <Text style={styles.buttonText}>Customer</Text>
         </TouchableOpacity>
         <TouchableOpacity style={styles.button} onPress = {()=> {(navigation.navigate('KitchenRegister'))}}>
