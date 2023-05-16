@@ -9,12 +9,12 @@ import Splash from "./src/screens/Splash"
 import HomeScreen from './src/screens/HomeScreen';
 import SignupScreen from './src/screens/SignupScreen';
 import SigninScreen from './src/screens/SigninScreen';
-import ChefRegisterForm from './src/screens/ChefRegisterForm';
-import ChefLoginForm from './src/screens/ChefLoginForm';
-import KitchenLoginForm from './src/screens/KitchenLoginForm';
-import KitchenRegisterForm from './src/screens/KitchenRegisterForm';
-import CustomerLoginForm from './src/screens/CustomerLoginFor.';
-import CustomerRegisterForm from './src/screens/CustomerRegisterForm';
+import ChefRegisterForm from './src/screens/Chef/ChefRegisterForm';
+import ChefLoginForm from './src/screens/Chef/ChefLoginForm';
+import KitchenLoginForm from './src/screens/Kitchen/KitchenLoginForm';
+import KitchenRegisterForm from './src/screens/Kitchen/KitchenRegisterForm';
+import CustomerLoginForm from './src/screens/Customer/CustomerLoginFor.';
+import CustomerRegisterForm from './src/screens/Customer/CustomerRegisterForm';
 
 const Stack = createStackNavigator();
 
