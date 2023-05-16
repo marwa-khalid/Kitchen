@@ -10,7 +10,7 @@ const EditFoodScreen = ({ route, navigation }) => {
   const [image, setFoodImage] = useState('');
 
   useEffect(() => {
-    fetch(`http://localhost:3500/food/${id}`)
+    fetch(`http://localhost:3500/food/${_id}`)
       .then(response => response.json())
       .then(data => {
         setFoodName(data.name);

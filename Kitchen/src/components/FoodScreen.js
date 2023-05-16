@@ -20,13 +20,6 @@ const FoodScreen = ({ navigation }) => {
     navigation.navigate('AddFoodItem');
   };
 
-  const handleEditFood = () => {
-    navigation.navigate('EditFoodItem');
-  };
-
-  const handleDeleteFood = () => {
-    navigation.navigate('DeleteFoodItem');
-  };
   const renderFoodItem = ({ item:food }) => {
     return (
       <TouchableOpacity style={styles.foodItem}>

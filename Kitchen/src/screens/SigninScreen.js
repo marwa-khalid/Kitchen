@@ -9,7 +9,7 @@ const SigninScreen = ({navigation}) => {
         <TouchableOpacity style={styles.button}>
           <Text style={styles.buttonText}>Customer</Text>
         </TouchableOpacity>
-        <TouchableOpacity style={styles.button}>
+        <TouchableOpacity style={styles.button} onPress = {()=> {(navigation.navigate('KitchenLogin'))}} >
           <Text style={styles.buttonText}>Kitchen</Text>
         </TouchableOpacity>
         <TouchableOpacity style={styles.button}>

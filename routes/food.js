@@ -1,31 +1,10 @@
-//create routes for fuctions to accept requests
-//project has many entities
-//different requests have different url , different url have different handlers
 
 const express = require('express');
-const multer = require('multer');
 const bcrypt = require("bcryptjs");
-//need router from express
-//it will specify all urls
 const router = express.Router();
-
-//get handle of schema, get access of js file
 const Food = require('../structure/detail');
-const Chef = require('../structure/chef')
-
-// //storage
-// const Storage = multer.diskStorage({
-//     destination: (req, file, cb)=>{
-//       cb(null,'./public/uploads')
-//     },
-//     filename: (req, file, cb)=>{
-//         cb(null,file.fieldname+ "_" + Date.now() + "_" + file.originalname)
-//     },
-// })
-  
-// const upload = multer({
-//     storage: Storage
-// }).single('image')
+const User = require('../structure/user')
+const AsyncStorage = require('@react-native-async-storage/async-storage');
 
 //async will not lock process
 //get all records
@@ -119,44 +98,90 @@ router.delete('/:id', async(req,res) =>{
 })
 
 //Authentication routes
-
 router.post('/register', async (req, res) => {
-    const { username, email, password } = req.body;
+    try {
+      const { fullName, email, address, phoneNumber, password, userType } = req.body;
   
-    // Check if chef already exists
-    const existingChef = await Chef.findOne({ email });
-    if (existingChef) {
-      return res.status(400).json({ message: 'Chef already exists' });
+      const existingUser = await User.findOne({ email });
+      if (existingUser) {
+        return res.status(400).json({ message: 'User already exists' });
     }
-  
     // Encrypt password
     const hashedPassword = await bcrypt.hash(password, 10);
+
+     // Create a new user instance
+     const user = new User({
+        fullName,
+        email,
+        address,
+        phoneNumber,
+        password:hashedPassword,
+        userType,
+      });
+
+      // Save the user to MongoDB
+      await user.save();
   
-    // Create new chef
-    const chef = new Chef({
-      username,
-      email,
-      password:hashedPassword,
-    });
-  
-    // Save chef to database
-    await chef.save();
-  
-    res.status(201).json({ message: 'Chef registered successfully' });
+      // Registration successful
+      res.status(200).json({ message: 'Registration successful' });
+    } catch (error) {
+      console.error('Error registering user:', error);
+
+      res.status(500).json({ error: 'Registration failed' });
+    }
   });
+
+  
+// router.post('/register', async (req, res) => {
+//     const { username, email, password } = req.body;
+  
+//     // Check if chef already exists
+//     const existingChef = await Chef.findOne({ email });
+//     if (existingChef) {
+//       return res.status(400).json({ message: 'Chef already exists' });
+//     }
+//     // Encrypt password
+//     const hashedPassword = await bcrypt.hash(password, 10);
+  
+//     // Create new chef
+//     const chef = new Chef({
+//       username,
+//       email,
+//       password:hashedPassword,
+//     });
+  
+//     // Save chef to database
+//     await chef.save();
+
+//     const storeUserIdentifier = async (identifier) => {
+//         try {
+//           await AsyncStorage.setItem('chefId', identifier);
+//           console.log('User identifier stored successfully.');
+//         } catch (error) {
+//           console.log('Error storing user identifier:', error);
+//         }
+//       };
+  
+  
+//     res.status(201).json({ message: 'Chef registered successfully' });
+
+//     const chefId = chefId; 
+//     storeUserIdentifier(chefId);
+
+//   });
   
   router.post('/login', async (req, res) => {
     
     const { email, password } = req.body;
   
     // Check if chef exists
-    const chef = await Chef.findOne({ email });
-    if (!chef) {
+    const user = await User.findOne({ email });
+    if (!user) {
       return res.status(401).json({ message: 'Invalid login credentials' });
     }
   
     // Check password
-    const isPasswordMatch = await bcrypt.compare(password, chef.password);
+    const isPasswordMatch = await bcrypt.compare(password, user.password);
     if (!isPasswordMatch) {
       return res.status(401).json({ message: 'Invalid login credentials' });
     }

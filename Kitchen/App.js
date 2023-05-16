@@ -11,6 +11,7 @@ import Splash from "./src/screens/Splash"
 import HomeScreen from './src/screens/HomeScreen';
 import SignupScreen from './src/screens/SignupScreen';
 import SigninScreen from './src/screens/SigninScreen';
+import ChefRegisterForm from './src/screens/ChefRegisterForm';
 const Stack = createStackNavigator();
 
 function App() {
@@ -20,6 +21,7 @@ function App() {
         <Stack.Screen name="Main" component={Splash}/>
         <Stack.Screen name="Home" component={HomeScreen}/>
         <Stack.Screen name="KitchenRegister" component={KitchenRegisterForm}/>
+        <Stack.Screen name="ChefRegister" component={ChefRegisterForm}/>
         <Stack.Screen name="Signup" component={SignupScreen}/>
         <Stack.Screen name="Signin" component={SigninScreen}/>
         <Stack.Screen name="KitchenLogin" component={KitchenLoginForm}/>

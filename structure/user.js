@@ -3,8 +3,9 @@
 
 const mongoose = require('mongoose')
 
-const chefDetail = new mongoose.Schema({
-    username: {
+const userDetail = new mongoose.Schema({
+    
+    fullName: {
         //properties
         type: String,
         required: true
@@ -13,11 +14,22 @@ const chefDetail = new mongoose.Schema({
         type: String,
         required: true
     },
+    phoneNumber: {
+        type: String,
+        required: true
+    },
+    address: {
+        type: String,
+        required: true
+    },
     password: {
         type: String,
         required: true
-    }
+    },
+    userType: {
+        type: String,
+    },
 })
 
 //export schema
-module.exports = mongoose.model('Chef', chefDetail)
+module.exports = mongoose.model('User', userDetail)
