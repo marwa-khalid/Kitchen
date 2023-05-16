@@ -33,37 +33,65 @@ const ChefRegisterForm = ({ navigation }) => {
     };
   
     return (
-      <View>
-        <TextInput
-          placeholder="Full Name"
-          value={fullName}
-          onChangeText={setFullName}
-        />
-        <TextInput
-          placeholder="Email"
-          value={email}
-          onChangeText={setEmail}
-        />
-        <TextInput
-          placeholder="Address"
-          value={address}
-          onChangeText={setAddress}
-        />
-        <TextInput
-          placeholder="Phone Number"
-          value={phoneNumber}
-          onChangeText={setPhoneNumber}
-        />
-        <TextInput
-          placeholder="Password"
-          secureTextEntry
-          value={password}
-          onChangeText={setPassword}
-        />
-        <Button title="Register" onPress={handleRegistration} />
-      </View>
-    );
-  };
-  
+        <View style={styles.container}>
+          <Text style={styles.label}>Full Name:</Text>
+          <TextInput
+            placeholder="Full Name"
+            value={fullName}
+            onChangeText={setFullName}
+            style={styles.input}
+          />
+          <Text style={styles.label}>Email:</Text>
+          <TextInput
+            placeholder="Email"
+            value={email}
+            onChangeText={setEmail}
+            style={styles.input}
+          />
+          <Text style={styles.label}>Address:</Text>
+          <TextInput
+            placeholder="Address"
+            value={address}
+            onChangeText={setAddress}
+            style={styles.input}
+          />
+          <Text style={styles.label}>Phone number:</Text>
+          <TextInput
+            placeholder="Phone Number"
+            value={phoneNumber}
+            onChangeText={setPhoneNumber}
+            style={styles.input}
+          />
+          <Text style={styles.label}>Password:</Text>
+          <TextInput
+            placeholder="Password"
+            secureTextEntry
+            value={password}
+            onChangeText={setPassword}
+            style={styles.input}
+          />
+          <Button title="Register" onPress={handleRegistration} />
+        </View>
+      );
+    };
+    
+    
+  const styles = StyleSheet.create({
+    container: {
+      flex: 1,
+      padding: 20,
+    },
+    label: {
+      fontWeight: 'bold',
+      marginBottom: 5,
+    },
+    input: {
+      borderWidth: 1,
+      borderColor: '#ccc',
+      borderRadius: 4,
+      padding: 10,
+      marginBottom: 10,
+    },
+  });
   export default ChefRegisterForm;
   
