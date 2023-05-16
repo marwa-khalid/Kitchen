@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { View, Text, TextInput, Button, StyleSheet } from 'react-native';
 
-const ChefLoginForm = ({navigation}) => {
+const KitchenLoginForm = ({navigation}) => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
 
@@ -68,4 +68,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default ChefLoginForm;
+export default KitchenLoginForm;

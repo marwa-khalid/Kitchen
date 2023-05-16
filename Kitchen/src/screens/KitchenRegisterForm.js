@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
-import { View, Text, TextInput, StyleSheet, Button, Alert } from 'react-native';
+import { View, Text, TextInput, StyleSheet, Button, Alert, TouchableOpacity} from 'react-native';
 
-const SignUpScreen = ({ navigation }) => {
+const KitchenRegisterForm = ({ navigation }) => {
   const [username, setUsername] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
@@ -77,6 +77,10 @@ const SignUpScreen = ({ navigation }) => {
       />
 
       <Button title="Sign Up" onPress={handleSignUp} />
+      <TouchableOpacity style = {{textAlign:"center"}} onPress = {()=> {(navigation.navigate('KitchenLogin'))}}>
+        <Text>Already have an account? Login!</Text>
+      </TouchableOpacity>
+      
     </View>
   );
 };
@@ -99,4 +103,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default SignUpScreen;
+export default KitchenRegisterForm;
