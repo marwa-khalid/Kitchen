@@ -10,9 +10,11 @@ router.get("/", async (req, res) => {
     //send in json format.. .send will send in text form
     res.json(kitchen);
     console.log("Get Request Worked");
+    return res.send({token});
   } catch (err) {
     res.send("Error: " + err);
   }
+
 });
 
 module.exports = router;

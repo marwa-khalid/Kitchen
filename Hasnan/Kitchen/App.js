@@ -17,6 +17,7 @@ import KitchenRegisterForm from './src/screens/Kitchen/KitchenRegisterForm';
 import CustomerLoginForm from './src/screens/Customer/CustomerLoginForm';
 import CustomerRegisterForm from './src/screens/Customer/CustomerRegisterForm';
 import CustomerScreen from "./src/screens/Customer/CustomerScreen"
+import KitchenDetail from './src/screens/Customer/KitchenDetail';
 
 const Stack = createStackNavigator();
 
@@ -37,6 +38,7 @@ function App() {
         <Stack.Screen name="CustomerRegister" component={CustomerRegisterForm}/>
         <Stack.Screen name="CustomerLogin" component={CustomerLoginForm}/>
         <Stack.Screen name="CustomerScreen" component={CustomerScreen}/>
+        <Stack.Screen name="KitchenDetail" component={KitchenDetail}/>
         <Stack.Screen name="AddFoodItem" component={AddFoodScreen} />
         <Stack.Screen name="EditFoodItem" component={EditFoodScreen} />
         <Stack.Screen name="DeleteFoodItem" component={DeleteFoodScreen} />

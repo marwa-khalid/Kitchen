@@ -1,9 +1,7 @@
 import React, { useEffect, useState } from 'react';
-import { View, Text, TextInput, Image, FlatList, StyleSheet} from 'react-native';
+import { View, Text, TextInput, Image, FlatList, StyleSheet,TouchableOpacity} from 'react-native';
 import axios from 'axios';
-await AsyncStorage.setItem("profilePicture", res.data.profilePicture);
-
-navigation.navigate('CustomerScreen');
+import AsyncStorage from "@react-native-async-storage/async-storage";
 
 const navigateToEditProfile = () =>{
 }
@@ -24,6 +22,7 @@ const CustomerScreen = () => {
       const profilePicture = await AsyncStorage.getItem("profilePicture");
       
       const res = await axios.get(`http://localhost:3500/user/${userId}`, {headers: {"x-auth-token": token,}} );
+      
       console.log(res.data.profilePicture);
       setProfilePicture(res.data.profilePicture);
 
@@ -49,10 +48,12 @@ const CustomerScreen = () => {
 
   const renderKitchenCard = ({ item:kitchen }) => (
     <View style={styles.kitchenCard}>
-      <Image source={{ uri: kitchen.image }} style={styles.kitchenImage} />
-      <Text style={styles.kitchenName}>{kitchen.fullName}</Text>
-      <Text style={styles.kitchenCuisine}>{kitchen.expertise}</Text>
-      <Text style={styles.kitchenAddress}>{kitchen.address}</Text>
+      <TouchableOpacity>
+        <Image source={{ uri: kitchen.image }} style={styles.kitchenImage} />
+        <Text style={styles.kitchenName}>{kitchen.fullName}</Text>
+        <Text style={styles.kitchenCuisine}>{kitchen.expertise}</Text>
+        <Text style={styles.kitchenAddress}>{kitchen.address}</Text>
+      </TouchableOpacity>
     </View>
   );
 
