@@ -10,7 +10,7 @@ const Kitchen = require("../structure/kitchen");
 //Authentication routes
 router.post("/register", async (req, res) => {
   try {
-    const { fullName, email, address, phoneNumber, password, userType, image, expertise, experience } =
+    const { fullName, email, address, phoneNumber, password, userType, image, expertise, experience, CNIC, vehicleNumber} =
       req.body;
 
     const existingUser = await User.findOne({ email });
@@ -31,7 +31,9 @@ router.post("/register", async (req, res) => {
       userType,
       image,
       expertise,
-      experience
+      experience,
+      vehicleNumber,
+      CNIC
     });
 
     // Save the user to MongoDB

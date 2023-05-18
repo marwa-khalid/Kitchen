@@ -10,7 +10,7 @@ import {
 import axios from "axios";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 
-const ChefLoginForm = ({ navigation, userId }) => {
+const RiderLoginForm = ({ navigation, userId }) => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
 
@@ -28,7 +28,7 @@ const ChefLoginForm = ({ navigation, userId }) => {
       await AsyncStorage.setItem("token", res.data.token);
       await AsyncStorage.setItem("userId", res.data.userId);
       console.log("Token stored");
-      navigation.navigate("ChefScreen");
+      navigation.navigate("RiderScreen");
       
     }catch(err){
       console.log("error: " + err.message);
@@ -59,7 +59,7 @@ const ChefLoginForm = ({ navigation, userId }) => {
       <TouchableOpacity
         onPress={() => {
           {
-            navigation.navigate("ChefRegister");
+            navigation.navigate("RiderRegister");
           }
         }}
       >
@@ -87,4 +87,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default ChefLoginForm;
+export default RiderLoginForm;

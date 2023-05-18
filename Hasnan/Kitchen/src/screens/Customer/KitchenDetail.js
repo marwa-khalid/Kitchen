@@ -23,8 +23,7 @@ const KitchenDetail = ({ route, navigation }) => {
   };
 
   const addToCart = (menuItem) => {
-    // Implement your logic to add the selected menu item to the cart
-    // You can use a state management solution like Redux or React Context to manage the cart state
+    //cart logic
     console.log('Added to cart:', menuItem);
   };
 

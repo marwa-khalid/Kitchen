@@ -5,11 +5,11 @@ import { Image } from "react-native-elements";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import axios from "axios";
 
-const ChefScreen = ({ navigation }) => {
-  const [user, setChef] = useState([]);
+const RiderScreen = ({ navigation }) => {
+  const [user, setRider] = useState([]);
 
-  const getChef = async () => {
-    console.log("get chef details called");
+  const getRider = async () => {
+    console.log("get Rider details called");
 
     try {
       const token = await AsyncStorage.getItem("token");
@@ -19,7 +19,7 @@ const ChefScreen = ({ navigation }) => {
         headers: { "x-auth-token": token },
       });
       console.log(res.data);
-      setChef(res.data);
+      setRider(res.data);
       console.log("test");
     } catch (err) {
       console.log(err);
@@ -28,28 +28,23 @@ const ChefScreen = ({ navigation }) => {
 
   useEffect(() => {
     (async () => {
-      await getChef();
+      await getRider();
     })();
   }, []);
 
   return (
     <View style={styles.container}>
       <View style={styles.centerContainer}>
-        <Text style={styles.fullName}>Portfolio</Text>
+        <Image
+          style={styles.foodImage}
+          source={{ uri: user.image }}
+        ></Image>
         <View style={styles.contentContainer}>
           <TouchableOpacity style={styles.foodItem}>
-            <Image
-              style={styles.foodImage}
-              source={{ uri: user.image }}
-            ></Image>
             <View style={styles.infoContainer}>
               <View style={styles.nameContainer}>
                 <Text style={styles.fullName}>{user.fullName}</Text>
-                <Text style={styles.phoneNumber}>{user.phoneNumber}</Text>
-              </View>
-              <View style={styles.nameContainer}>
-                <Text style={styles.expertise}>{user.expertise}</Text>
-                <Text style={styles.experience}>{user.experience}</Text>
+                <Text style={styles.phoneNumber}>{user.vehicleNumber}</Text>
               </View>
             </View>
           </TouchableOpacity>
@@ -102,15 +97,6 @@ const styles = StyleSheet.create({
     fontSize: 16,
     marginLeft: 16,
   },
-  expertise: {
-    fontSize: 16,
-    marginBottom: 8,
-  },
-  experience: {
-    fontSize: 16,
-    fontWeight: "bold",
-    marginBottom: 8,
-  },
   fab: {
     bottom: 16,
     right: 0,
@@ -124,4 +110,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default ChefScreen;
+export default RiderScreen;

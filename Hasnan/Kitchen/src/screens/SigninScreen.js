@@ -15,7 +15,7 @@ const SigninScreen = ({navigation}) => {
         <TouchableOpacity style={styles.button} onPress = {()=> {(navigation.navigate('ChefLogin'))}}>
           <Text style={styles.buttonText}>Chef</Text>
         </TouchableOpacity>
-        <TouchableOpacity style={styles.button}>
+        <TouchableOpacity style={styles.button} onPress = {()=> {(navigation.navigate('RiderLogin'))}}>
           <Text style={styles.buttonText}>Rider</Text>
         </TouchableOpacity>
       </View>

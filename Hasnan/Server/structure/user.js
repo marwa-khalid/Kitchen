@@ -37,6 +37,12 @@ const userDetail = new mongoose.Schema({
   },
   experience:{
     type: String
+  },
+  CNIC:{
+    type:String,
+  },
+  vehicleNumber:{
+    type:String,
   }
 });
 
