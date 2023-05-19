@@ -42,6 +42,7 @@ router.post("/", auth, async function (req, res, next) {
   food.description = req.body.description;
   food.userId = req.user._id;
   food.image = req.body.image;
+  food.addedBy = req.user._id;
   await food.save();
   res.send(food);
 });

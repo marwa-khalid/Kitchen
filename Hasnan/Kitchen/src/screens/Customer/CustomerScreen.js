@@ -1,75 +1,46 @@
+// CustomerScreen.js
 import React, { useEffect, useState } from 'react';
-import { View, Text, TextInput, Image, FlatList, StyleSheet,TouchableOpacity} from 'react-native';
+import { View, Text, TextInput, Image, FlatList, StyleSheet, TouchableOpacity } from 'react-native';
 import axios from 'axios';
-import AsyncStorage from "@react-native-async-storage/async-storage";
 
-
-// const navigateToEditProfile = () =>{
-// }
-
-const navigateToKitchenDetail = (kitchenId) => {
-  navigation.navigate('KitchenDetail', { kitchenId });
-};
-
-const CustomerScreen = () => {
-  const [kitchens, setKitchen] = useState([]);
+const CustomerScreen = ({ navigation }) => {
+  const [kitchens, setKitchens] = useState([]);
   const [searchQuery, setSearchQuery] = useState('');
-  const [profilePicture, setProfilePicture] = useState(null);
 
   useEffect(() => {
-    fetchKitchen();
-    getProfilePicture();
+    fetchKitchens();
   }, []);
 
-  const getProfilePicture = async() => {
-
-    try{
-      const profilePicture = await AsyncStorage.getItem("profilePicture");
-      
-      const res = await axios.get(`http://localhost:3500/user/${userId}`, {headers: {"x-auth-token": token,}} );
-      
-      console.log(res.data.profilePicture);
-      setProfilePicture(res.data.profilePicture);
-
-    }catch(err){
-      console.log(err);
-
-    }
+  const navigateToKitchenDetail = (kitchenId) => {
+    navigation.navigate('KitchenDetail', { kitchenId });
   };
 
-  const fetchKitchen = async () => {
+  const fetchKitchens = async () => {
     try {
       const response = await axios.get('http://localhost:3500/kitchen');
-      setKitchen(response.data);
-      console.log(response.data)
+      setKitchens(response.data);
     } catch (error) {
       console.log('Error fetching kitchens:', error);
     }
   };
 
   const filteredKitchens = kitchens.filter((kitchen) =>
-  kitchen.fullName.toLowerCase().includes(searchQuery.toLowerCase())
-);
+    kitchen.fullName.toLowerCase().includes(searchQuery.toLowerCase())
+  );
 
-  const renderKitchenCard = ({ item:kitchen }) => (
+  const renderKitchenCard = ({ item }) => (
     <View style={styles.kitchenCard}>
-      <TouchableOpacity onPress={() => navigateToKitchenDetail(kitchen.id)}>
-        <Image source={{ uri: kitchen.image }} style={styles.kitchenImage} />
-        <Text style={styles.kitchenName}>{kitchen.fullName}</Text>
-        <Text style={styles.kitchenCuisine}>{kitchen.expertise}</Text>
-        <Text style={styles.kitchenAddress}>{kitchen.address}</Text>
+      <TouchableOpacity onPress={() => navigateToKitchenDetail(item._id)}>
+        <Image source={{ uri: item.image }} style={styles.kitchenImage} />
+        <Text style={styles.kitchenName}>{item.fullName}</Text>
+        <Text style={styles.kitchenCuisine}>{item.expertise}</Text>
+        <Text style={styles.kitchenAddress}>{item.address}</Text>
       </TouchableOpacity>
     </View>
   );
 
   return (
     <View style={styles.container}>
-      <TouchableOpacity style={styles.profilePictureContainer} onPress={navigateToEditProfile}>
-        <Image
-          style={styles.profilePicture}
-          source={{uri: profilePicture}}
-        />
-      </TouchableOpacity>
       <TextInput
         style={styles.searchBar}
         placeholder="Search for kitchens"
@@ -80,7 +51,7 @@ const CustomerScreen = () => {
 
       <FlatList
         data={filteredKitchens}
-        keyExtractor={(kitchen) => kitchen.id}
+        keyExtractor={(item) => item._id}
         renderItem={renderKitchenCard}
         contentContainerStyle={styles.kitchenList}
       />
@@ -118,10 +89,6 @@ const styles = StyleSheet.create({
     elevation: 3,
     padding: 16,
   },
-  profilePicture: {
-    width: 40,
-    height: 40,
-  },
   kitchenImage: {
     width: '100%',
     height: 160,
@@ -144,4 +111,5 @@ const styles = StyleSheet.create({
     color: '#888',
   },
 });
+
 export default CustomerScreen;

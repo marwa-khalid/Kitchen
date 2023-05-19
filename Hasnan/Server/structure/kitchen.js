@@ -17,7 +17,10 @@ const kitchenSchema = new mongoose.Schema({
     address:{
         type:String,
         required:true
-    }
+    },
+    addedBy: { 
+        type: mongoose.Schema.Types.ObjectId, ref: 'Kitchen' 
+    },
   });
   
 const Kitchen = mongoose.model('Kitchen', kitchenSchema);

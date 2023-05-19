@@ -18,6 +18,7 @@ import CustomerLoginForm from './src/screens/Customer/CustomerLoginForm';
 import CustomerRegisterForm from './src/screens/Customer/CustomerRegisterForm';
 import CustomerScreen from "./src/screens/Customer/CustomerScreen"
 import KitchenDetail from './src/screens/Customer/KitchenDetail';
+import CartScreen from './src/screens/Customer/CartScreen';
 import RiderRegisterForm from './src/screens/Rider/RiderRegisterForm';
 import RiderLoginForm from './src/screens/Rider/RiderLoginForm';
 import RiderScreen from './src/screens/Rider/RiderScreen';
@@ -42,6 +43,7 @@ function App() {
         <Stack.Screen name="CustomerLogin" component={CustomerLoginForm}/>
         <Stack.Screen name="CustomerScreen" component={CustomerScreen}/>
         <Stack.Screen name="KitchenDetail" component={KitchenDetail}/>
+        <Stack.Screen name="CartScreen" component={CartScreen}/>
         <Stack.Screen name="RiderRegister" component={RiderRegisterForm}/>
         <Stack.Screen name="RiderLogin" component={RiderLoginForm}/>
         <Stack.Screen name="RiderScreen" component={RiderScreen}/>
