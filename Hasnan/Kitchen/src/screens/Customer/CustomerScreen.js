@@ -4,8 +4,12 @@ import axios from 'axios';
 import AsyncStorage from "@react-native-async-storage/async-storage";
 
 
-const navigateToEditProfile = () =>{
-}
+// const navigateToEditProfile = () =>{
+// }
+
+const navigateToKitchenDetail = (kitchenId) => {
+  navigation.navigate('KitchenDetail', { kitchenId });
+};
 
 const CustomerScreen = () => {
   const [kitchens, setKitchen] = useState([]);
@@ -49,7 +53,7 @@ const CustomerScreen = () => {
 
   const renderKitchenCard = ({ item:kitchen }) => (
     <View style={styles.kitchenCard}>
-      <TouchableOpacity>
+      <TouchableOpacity onPress={() => navigateToKitchenDetail(kitchen.id)}>
         <Image source={{ uri: kitchen.image }} style={styles.kitchenImage} />
         <Text style={styles.kitchenName}>{kitchen.fullName}</Text>
         <Text style={styles.kitchenCuisine}>{kitchen.expertise}</Text>

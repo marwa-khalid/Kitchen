@@ -82,43 +82,4 @@ router.delete("/:id", async (req, res) => {
   });
 });
 
-// router.post('/register', async (req, res) => {
-//     const { username, email, password } = req.body;
-
-//     // Check if chef already exists
-//     const existingChef = await Chef.findOne({ email });
-//     if (existingChef) {
-//       return res.status(400).json({ message: 'Chef already exists' });
-//     }
-//     // Encrypt password
-//     const hashedPassword = await bcrypt.hash(password, 10);
-
-//     // Create new chef
-//     const chef = new Chef({
-//       username,
-//       email,
-//       password:hashedPassword,
-//     });
-
-//     // Save chef to database
-//     await chef.save();
-
-//     const storeUserIdentifier = async (identifier) => {
-//         try {
-//           await AsyncStorage.setItem('chefId', identifier);
-//           console.log('User identifier stored successfully.');
-//         } catch (error) {
-//           console.log('Error storing user identifier:', error);
-//         }
-//       };
-
-//     res.status(201).json({ message: 'Chef registered successfully' });
-
-//     const chefId = chefId;
-//     storeUserIdentifier(chefId);
-
-//   });
-
-//export module router
-//it will be accesible in app.js
 module.exports = router;
